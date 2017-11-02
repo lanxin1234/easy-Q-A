@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <% include includes/head.ejs %></head>
+<body>
+    <div class="wrapper">
+        <% include includes/mainnav.ejs %>
+
+        <div class="main-panel">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle">
+                            <span class="icon-bar bar1"></span>
+                            <span class="icon-bar bar2"></span>
+                            <span class="icon-bar bar3"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">登录</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="header">
+                                    <h4 class="title">登录</h4>
+                                    <p class="category">专业前端开发问答社区</p>
+                                </div>
+                                <div class="content">
+                                    <div class="form-horizontal">
+                                        <div class="form-group">
+                                            <label for="inputEmail" class="col-sm-2 control-label">email</label>
+                                            <div class="col-sm-6">
+                                                <input type="email" class="form-control" id="inputEmail" placeholder="请输入email地址">
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="form-group">
+                                            <label for="inputPassword" class="col-sm-2 control-label">密码</label>
+                                            <div class="col-sm-6">
+                                                <input type="password" class="form-control" id="inputPassword" placeholder="Password"></div>
+                                        </div>
+                                    
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <button type="submit" class="btn btn-success" id="submitbtn">登录</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<% include includes/jslink.ejs %>
+
+<script type="text/javascript">
+    (function(){
+        //登录按钮
+        $("#submitbtn").bind("click",function(){
+            var email = $("#inputEmail").val();
+            var password = $("#inputPassword").val();
+            $.ajax({
+                "type" : "post",
+                "url" : "/login",
+                "data" : {
+                    "email" : email,
+                    "password" : password
+                },
+                "success" : function(data){
+                    if(data.result == 1){
+                        alert("登录成功！");
+                    }else if(data.result == -1){
+                        alert("用户名或密码错误！");
+                    } 
+                }
+            })
+        });
+    })();
+</script>
+
+</html>
+

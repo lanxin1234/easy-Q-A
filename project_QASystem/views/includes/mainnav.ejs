@@ -1,0 +1,45 @@
+<div class="sidebar" data-background-color="white" data-active-color="warning">
+    <div class="sidebar-wrapper">
+        <div class="logo">
+            <a href="http://www.creative-tim.com" class="simple-text">爱前端问答平台</a>
+        </div>
+
+        <ul class="nav">
+            <li <% if(locate == 'index'){ %> class="active" <% } %> >
+                <a href="/"> 
+                    <i class="iconfont">&#xf014b;</i>
+                    <p>首页</p>
+                </a>
+            </li>
+           
+        </ul>
+        <div class="bottom_box">
+            <%
+                if(!login){
+            %>
+                <ul class="nav">
+                    <li <% if(locate == 'login'){ %> class="active" <% } %>>
+                        <a href="/login">
+                            <i class="iconfont">&#xe615;</i>
+                            <p>登录</p>
+                        </a>
+                    </li>
+                    <li <% if(locate == 'regist'){ %> class="active" <% } %>>
+                        <a href="/regist">
+                            <i class="iconfont">&#xe676;</i>
+                            <p>注册</p>
+                        </a>
+                    </li>
+                </ul>
+            <%
+                }else{
+            %>
+                <p>
+                    恭喜，你已经成功登录！！
+                </p>
+            <%
+                }
+            %>
+        </div>
+    </div>
+</div>
